@@ -1,0 +1,84 @@
+<html >
+  <head>
+    
+    <title>Food Database</title>
+    
+  </head>
+  <body>
+    <header>
+    <section>
+      <h1><a href="index.html"> Food Database</a></h1>
+    <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dishes.html">Dishes</a></li>
+      <li><a href="foodReport.html">Food Report</a></li>
+      <li><a href="cookingTips.html">Cooking Tips</a></li>
+      
+     
+    </ul>
+  </nav>
+		</header>
+	</section>
+	<main>
+	<h3>Food Details</h3> 
+
+  <section id = "dishesDetail"></section>
+	
+</main>
+	
+<footer>
+	&copy; 2024 Food Company. All rights reserved.
+</footer>
+</body>
+</html>
+
+	<script>
+		let dishes = [
+			{id : "1", name: "Pizza ", title : "<strong>Cuisine: </strong> Italian ",ingredients: "<strong>Ingredients: </strong>Dough, tomato sauce, cheese, toppings",details:"<strong>Details: </strong>This is a delicious dish with verious toppings."},
+			{id : "2", name: "Sushi ", title : "<strong>Cuisine: </strong> Japanese ",ingredients: "<strong>Ingredients: </strong>Rice, fish, seaweed",details:"<strong>Details: </strong>This is a delicious dish with verious toppings."},
+			{id : "3", name: "Tacos", title : "<strong>Cuisine: </strong> Mexican",ingredients: "<strong>Ingredients: </strong>Tortills, meat, salsa",details:"<strong>Details: </strong>This is a delicious dish with verious toppings."},
+			{id : "4", name: "Pasta Carbonara", title : "<strong>Cuisine: </strong> Italian ",ingredients: "<strong>Ingredients: </strong>Pasta, eggs, chees, bacon",details:"<strong>Details: </strong>This is a delicious dish with verious toppings."},
+			{id : "5", name: "Chocolate Cake", title : "<strong>Cuisine: </strong> Dessert ",ingredients: "<strong>Ingredients: </strong>Flour, Sugar, cocoa, eggs, chocolates",details:"<strong>Details: </strong>This is a delicious dish with verious toppings."},
+			{id : "6", name: "Biryani", title : "<strong>Cuisine: </strong> Indian ",ingredients: "<strong>Ingredients: </strong>Rice, meat, spices, vegetables",details:"<strong>Details: </strong>This is a delicious dish with verious toppings."}
+			
+			
+		]
+
+function getParameterById(id){
+		
+//get the id from the URL
+		let url = new URL(window.location.href)
+
+return url.searchParams.get(id)
+}
+let dishId  = getParameterById('id')
+
+//find that id in the database
+let dish;
+for (let i = 0; i< dishes.length; i++ ){
+	if (dishes[i].id === dishId){
+		dish =dishes[i]
+	}
+}
+//display the details on the view
+
+
+	let dishesDetailElement = document.getElementById('dishesDetail');
+	if (dish){
+	dishesDetailElement.innerHTML = `
+	
+	<h4>${dish.name}</h4> 
+	<ul>
+		
+		<li>${dish.title}</li>
+		<li>${dish.ingredients}</li>
+		<li>${dish.details}</li>
+		</ul>
+	`
+} else {
+	dishesDetailElement.innerHTML = 'dishes not found.'
+}
+	</script>
+  </body>
+</html>
